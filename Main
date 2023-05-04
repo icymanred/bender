@@ -60,7 +60,7 @@ repeat task.wait() until game:IsLoaded()
          "SendNotification",
          {
             Title = "Bender",
-            Text = "Hello, ".. Display .."! It looks like you're new, would you like a list of commands?", -- i forgot to make the cmds cause im lazy
+            Text = "Hello, ".. Display .."! It looks like you're new, would you like a list of commands?", -- I forgot to make them
             Button1 = "Yes",
             Button2 = "No",
             Duration = 50,
@@ -332,7 +332,7 @@ repeat task.wait() until game:IsLoaded()
 
       -- // Map Movers \\ --
       
-      if string.sub(msg:lower(), 0, #msg) == "blockobby" then -- we dont ttalk about this
+      if string.sub(msg:lower(), 0, #msg) == "blockobby" then -- Very inefficient, I know lol
          game.Players:Chat(":respawn me")
          game.Players:Chat("nok")
          task.wait(0.4)
@@ -619,7 +619,7 @@ repeat task.wait() until game:IsLoaded()
       if GetMatchingPlayerName(Player) == "No player found." then
          notify("Bender", "'" .. Player .. "' does not exist!", 1)
       elseif GetMatchingPlayerName(Player) == "Multiple players found." then
-         notify("Bender", "Multiple Players Found, unable to whitelist!", 1)
+         notify("Bender", "Multiple Players Found, unable to kick!", 1)
       elseif GetMatchingPlayerName(Player) == "Given input is too long." then
          notify("Bender", "'" .. Player .. "' does not exist!", 1)
       elseif not GetMatchingPlayerName(Player) then
@@ -984,7 +984,9 @@ end
          if GetMatchingPlayerName(Player) == "No player found." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif GetMatchingPlayerName(Player) == "Multiple players found." then
-            notify("Bender", "Multiple Players Found, unable to whitelist!", 1)
+            notify("Bender", "Multiple Players Found, 
+            
+            !", 1)
          elseif GetMatchingPlayerName(Player) == "Given input is too long." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif not GetMatchingPlayerName(Player) then
@@ -1002,7 +1004,7 @@ end
          if GetMatchingPlayerName(Player) == "No player found." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif GetMatchingPlayerName(Player) == "Multiple players found." then
-            notify("Bender", "Multiple Players Found, unable to whitelist!", 1)
+            notify("Bender", "Multiple Players Found, unable to remove whitelist!", 1)
          elseif GetMatchingPlayerName(Player) == "Given input is too long." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif not GetMatchingPlayerName(Player) then
@@ -1116,7 +1118,7 @@ end
             if GetMatchingPlayerName(Player) == "No player found." then
                 notify("Bender", "'" .. Player .. "' does not exist!", 1)
             elseif GetMatchingPlayerName(Player) == "Multiple players found." then
-                notify("Bender", "Multiple players found. Unable to whitelist!", 1)
+                notify("Bender", "Multiple players found. Unable to rewhitelist!", 1)
             elseif GetMatchingPlayerName(Player) == "Given input is too long." then
                 notify("Bender", "'" .. Player .. "' does not exist!", 1)
             elseif not table.find(Whitelisted, GetMatchingPlayerName(Player)) then
