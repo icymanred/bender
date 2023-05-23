@@ -1,4 +1,3 @@
--- ERM..... I just stole this and modified it a lil bit so dont come at me OK?
 function notify(titletxt, text, time)
     local GUI = Instance.new("ScreenGui")
     local Main = Instance.new("Frame", GUI)
@@ -39,3 +38,11 @@ function notify(titletxt, text, time)
         GUI:Destroy();
     end)()
 end
+
+function chatNotify(req)
+    game.StarterGui:SetCore("ChatMakeSystemMessage", {
+        Text = req; 
+        Font = Enum.Font.SourceSansBold;
+        FontSize = Enum.FontSize.Size24;
+        })
+    end
