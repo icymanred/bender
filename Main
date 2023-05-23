@@ -295,8 +295,13 @@ repeat task.wait() until game:IsLoaded()
          if SoundCheck() == true then
             local SavedSound = tostring(game:GetService("Workspace").Terrain["_Game"].Folder.Sound.SoundId)
             local SoundID = tostring(string.match(SavedSound, "%d+$"))
+            if not SoundID == "0" or "-" then
             notify("Bender", "Successfully locked sound: '" .. SoundID .. "'", 1)
             game.Players:Chat("alert Sound is locked")
+            else
+                game.Players:Chat("alert Sound is Muted")
+                return
+            end
             -- Setting Up Loop
             LockedSound = true
             while LockedSound == true do
