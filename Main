@@ -1,4 +1,3 @@
-
 --[[
 ____                      ___                          ___      ____
 |  _ \                     | |                         /_ |     |___ \
@@ -44,6 +43,13 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
    else
       LP:Kick("Sorry, this script is not compatible with this game.")
    end
+-- Execution Check
+   if not hasExecuted then
+    getgenv().hasExecuted = true
+  else
+    chatNotify("It seems that you may have executed twice; please note that this may cause instability issues. If you did not mean to do so, please say 'rejoin'.", 1,0,0)
+    isKohls = false;
+  end
 
    -- // Startup \\ --
 
