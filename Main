@@ -44,8 +44,9 @@ repeat task.wait() until game:IsLoaded()
       function Callback(text)
          if text == "Yes" then
             notify("Bender", "Press 'F9', or type '/console' to view a list of commands.", 3)
-            print("I forgot to make the commands sorry uh")
-            print("also since the kick method used in the script is broken, certain commands might not properly work.. unless it fixes itself one day idk")
+            print("i forgot to make the commands sorry uh")
+            print("also, this script is fairly outdated, so I HIGHLY suggest you add your own tweaks")
+            print("have fun exploring!! - from kayla <3")
          end
       end
 
@@ -332,7 +333,7 @@ repeat task.wait() until game:IsLoaded()
 
       -- // Map Movers \\ --
       
-      if string.sub(msg:lower(), 0, #msg) == "blockobby" then -- Very inefficient, I know lol
+      if string.sub(msg:lower(), 0, #msg) == "blockobby" then -- very inefficient, I know lol
          game.Players:Chat(":respawn me")
          game.Players:Chat("nok")
          task.wait(0.4)
@@ -699,7 +700,7 @@ repeat task.wait() until game:IsLoaded()
          end
 
          if string.sub(msg:lower(), 0, #msg) == "close" then
-            notify("Bender", "Please wait..", 1)
+            notify("Bender", "...", 0.4)
             local Timer = 1
             local HasPerm = CheckForPerm(GetMatchingPlayerName(User))
             local HasAdminPad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(LP.Name .. "'s admin")
@@ -1560,7 +1561,7 @@ end
          local Ping2 = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString(), " "
 
          if Ping1 == Ping2 then
-            return false
+            return true
          else
             return false
          end
