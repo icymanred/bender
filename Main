@@ -13,10 +13,18 @@ ____                      ___                          ___      ____
 
 repeat task.wait() until game:IsLoaded()
 
-   local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputService = false, 112420803 or 115670532, game.PlaceId, game.JobId, game.Players.LocalPlayer.Name, game.Players.LocalPlayer.DisplayName, game.Players.LocalPlayer, game.Players.LocalPlayer.Character, game:GetService("UserInputService"), game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") 
-   getgenv().Whitelisted = {}
-   getgenv().WhitelistCount = {} getgenv().Connections = {} getgenv().Banned = {} getgenv().Pref = "!" getgenv().WhitelistConnection = {} getgenv().LockedSound = false getgenv().SongQueue = {}
-   -- Game Check
+
+  -- For PERSONAL use, NOT code use (touch this! ✅)
+   getgenv().Whitelisted = {} getgenv().Banned = {} getgenv().Pref = "!"
+
+   -- For CODE use, NOT PERSONAL use (DONT touch this! ❌)
+   getgenv().WhitelistCount = {} getgenv().Connections = {}  getgenv().WhitelistConnection = {} getgenv().LockedSound = false getgenv().SongQueue = {}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputService = false, 112420803 or 115670532, game.PlaceId, game.JobId, game.Players.LocalPlayer.Name, game.Players.LocalPlayer.DisplayName, game.Players.LocalPlayer, game.Players.LocalPlayer.Character, game:GetService("UserInputService"), game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") 
+
+-- Game Check
    if game.PlaceId == KohlsID then
       isKohls = true
 
@@ -744,7 +752,7 @@ repeat task.wait() until game:IsLoaded()
                      elseif CheckForCrash() ~= true then
                         notify("Bender", "Crash failed. Say YES to retry, say NO to cancel.", 2)
                         print("Prompted User For Response")
-                        task.wait(3) -- Estimate of when commands stop
+                        task.wait(5) -- Response Delay
                         local storedResponse = tostring(checkYesOrNo())
                         local loweredResponse = storedResponse:lower()
                         if loweredResponse == "yes" then
@@ -814,7 +822,7 @@ repeat task.wait() until game:IsLoaded()
                      elseif CheckForCrash() ~= true then
                         notify("Bender", "Attempt failed. Say YES to retry, say NO to cancel.", 2)
                         print("Prompted User For Response")
-                        task.wait(3) -- Estimate of Commands Stopping
+                        task.wait(5) -- Response Delay
                         local storedResponse = tostring(checkYesOrNo())
                         local loweredResponse = storedResponse:lower()
                         if loweredResponse == "yes" then
