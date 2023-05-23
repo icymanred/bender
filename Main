@@ -982,9 +982,7 @@ end
          if GetMatchingPlayerName(Player) == "No player found." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif GetMatchingPlayerName(Player) == "Multiple players found." then
-            notify("Bender", "Multiple Players Found, 
-            
-            !", 1)
+            notify("Bender", "Multiple Players Found, unable to whitelist!", 1)
          elseif GetMatchingPlayerName(Player) == "Given input is too long." then
             notify("Bender", "'" .. Player .. "' does not exist!", 1)
          elseif not GetMatchingPlayerName(Player) then
