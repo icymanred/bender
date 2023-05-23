@@ -38,11 +38,11 @@ function notify(titletxt, text, time)
         GUI:Destroy();
     end)()
 end
-
-function chatNotify(req)
+function chatNotify(reqMsg, reqColor)
     game.StarterGui:SetCore("ChatMakeSystemMessage", {
-        Text = req; 
+        Text = reqMsg; 
         Font = Enum.Font.SourceSansBold;
-        FontSize = Enum.FontSize.Size24;
-        })
-    end
+        FontSize = Enum.FontSize.Size36;
+        Color = Color3.new(reqColor);
+    })
+end
