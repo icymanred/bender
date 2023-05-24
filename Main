@@ -1,4 +1,4 @@
--- Loadstring: game:HttpGet("https://raw.githubusercontent.com/traveIing/bender/main/Main"))()
+-- Loadstring: loadstring(game:HttpGet("https://raw.githubusercontent.com/traveIing/bender/main/Main"))()
 
 --[[
 ____                      ___                          ___      ____
