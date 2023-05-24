@@ -15,7 +15,7 @@ repeat task.wait() until game:IsLoaded()
 
 
   -- For PERSONAL use, NOT code use (touch this! ✅)
-   getgenv().Whitelisted = {} getgenv().Banned = {} getgenv().Pref = "!"
+   getgenv().Whitelisted = {} getgenv().Banned = {} getgenv().Pref = "!" getgenv().ChatlogsSpamText = "ff" getgenv().ChatSpamText = "Text"
 
    -- For CODE use, NOT PERSONAL use (DONT touch this! ❌)
    getgenv().WhitelistCount = {} getgenv().Connections = {}  getgenv().WhitelistConnection = {} getgenv().LockedSound = false getgenv().SongQueue = {}
@@ -48,6 +48,7 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
     getgenv().hasExecuted = true
   else
     chatNotify("It seems that you may have executed twice; please note that this may cause instability issues. If you did not mean to do so, please say 'rejoin'.", 1,0,0)
+    print("As you have executed twice, some aspects of this script may be bugged out. Please say 'rejoin' to resolve this.")
     isKohls = false;
   end
 
@@ -776,7 +777,8 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
             end
          end
          
-         -- Dedicated Functions for Crash
+-- Dedicated Functions for The "close" Command
+
          function checkYesOrNo()
             if string.sub(msg:lower(), 0, #msg) == "yes" then
                return "yes"
@@ -848,7 +850,8 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
             end
          end
          
-         -- Functions End
+-- Functions End
+
    if string.sub(msg:lower(), 0, #msg) == "pclose" then
       notify("Bender", "Please wait..", 0.5)
       local HasPersons = CheckForPersons(LP.Name)
@@ -1036,8 +1039,9 @@ end
       end
       -- Roblox Utilities
       if string.sub(msg:lower(), 0, #msg) == "exit" then
-         game:Shutdown()
-      end
+        task.wait(0.2)
+        game:Shutdown()
+    end
 --[[  if string.sub(msg:lower(), 0, 6) == "volume" then
          local volumeNumber = string.sub(msg, 8)
          local F = 0.
@@ -1058,7 +1062,7 @@ end
          ServerHop()
       end
       -- Script Utilities
-      if string.sub(msg:lower(), 0, #msg) == "endscript" then
+      if string.sub(msg:lower(), 0, #msg) == "emergencyexit" then
          for _,Connection in ipairs(Connections) do
             Connection:Disconnect()
             LockedSound = false
@@ -1374,7 +1378,7 @@ end
       function ClearLogs()
          for i = 1, 500 do
             task.wait()
-            game.Players:Chat("ff \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n %")
+            game.Players:Chat(ChatlogsSpamText)
          end
       end
       function ServerHop() -- shhhhhhhh
@@ -1737,8 +1741,9 @@ function Unanchor()
    LP.Character.HumanoidRootPart.Anchored = false
 end
 function ClearChat()
-   for i = 1, 5 do
-      SendMessage("-------------------------------------------------------------------------------------")
+    task.wait(0.5)
+   for i = 1, 7 do
+      SendMessage(ChatSpamText)
    end
 end
 function SendMessage(Text)
