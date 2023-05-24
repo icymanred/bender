@@ -18,17 +18,16 @@ The script provides the following commands for various functionalities:
 
 #### Teleporting Shortcuts
 
-1. **bring (plr, all)**
+1. **bring (plr, all, others, friends, noadmins, admins) [NEW PARAMETERS!]**
 
    Description: This command teleports other players to you.
    
-   Usage example: "bring Johnny", "bring all"
+   Usage example: "bring Johnny", "bring all", "bring noadmins", "bring admins", "bring friends"
    
    Warnings:
    
    - Requires Admin.
    - This command can be buggy when used with the "spam" command.
-   - Currently does NOT work with default game parameters, such as "friends," "others," "admins," etc. (SUPPORT SOON)
 
 2. **to (plr)**
 
