@@ -18,7 +18,7 @@ The script provides the following commands for various functionalities:
 
 #### Teleporting Shortcuts
 
-1. **bring (plr, all, others, friends, noadmins, admins) [NEW PARAMETERS!]**
+1. **bring (plr, all, others, everyone, friends, noadmins, admins) [NEW PARAMETERS!]**
 
    Description: This command teleports other players to you.
    
