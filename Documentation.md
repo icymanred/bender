@@ -22,7 +22,7 @@ The script provides the following commands for various functionalities:
 
    Description: This command teleports other players to you.
    
-   Usage example: "bring Johnny", "bring all", "bring noadmins", "bring admins", "bring friends"
+   Usage example: "bring Johnny", "bring all", "bring everyone", "bring noadmins", "bring admins", "bring friends"
    
    Warnings:
    
