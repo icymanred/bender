@@ -1,4 +1,4 @@
--- Loadstring: loadstring(game:HttpGet("https://raw.githubusercontent.com/traveIing/bender/main/Main"))()
+-- Loadstring: game:HttpGet("https://github.com/traveIing/bender/edit/main/Main"))()
 
 --[[
 ____                      ___                          ___      ____
@@ -530,6 +530,37 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
                end
             end
          end
+
+      -- // Gear Ban \\ --
+      
+      if string.sub(msg:lower(), 0, 7) == "gearban" then
+        local player = string.sub(msg, 9)
+        _G.Loop = true
+        while _G.Loop == true do
+            task.wait()
+            for _,v in pairs(game.Players:GetChildren()) do
+                if (v.Name == GetMatchingPlayerName(player)) then
+                    Tool = v.Backpack:FindFirstChildOfClass("Tool")
+                    EquippedTool = v.Character:FindFirstChildOfClass("Tool")
+                    if (Tool or EquippedTool) then
+                        game.Players:Chat("ungear " .. v.Name .. " " .. math.random(1, 100))
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    if string.sub(msg:lower(), 0, 4) == "ungb" then
+        local player = string.sub(msg, 6)
+        _G.Loop = false
+        if (_G.Loop == false) then
+        chatNotify("loop false now")
+        else
+            chatNotify("loop already false")
+        end
+    end
+
 
       -- // Map Related \\ --
 
@@ -1064,7 +1095,7 @@ end
          ServerHop()
       end
       -- Script Utilities
-      if string.sub(msg:lower(), 0, #msg) == "emergencyexit" then
+      if string.sub(msg:lower(), 0, #msg) == "closeinstance" then
          for _,Connection in ipairs(Connections) do
             Connection:Disconnect()
             LockedSound = false
@@ -1779,4 +1810,12 @@ function CheckForPersons(Player)
    break
 end
 end
+end
+function allowChat(input)
+    if (input == true) then
+        req = true
+    else
+        req = false
+    end
+    game:GetService("StarterGui"):SetCoreGuiEnabled(Enum. CoreGuiType. Chat, req)
 end
