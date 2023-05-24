@@ -1,3 +1,5 @@
+-- Loadsring: loadstring(game:HttpGet("https://raw.githubusercontent.com/traveIing/bender/main/Main"))()
+
 --[[
 ____                      ___                          ___      ____
 |  _ \                     | |                         /_ |     |___ \
@@ -91,11 +93,41 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
 
       -- Teleporting Shortcuts --
       if string.sub(msg:lower(), 0, 5) == "bring" then
-         local Player = string.sub(msg, 7)
-         if Player == "all" then
+         local Request = string.sub(msg:lower(), 7) -- To accept caps parameters
+
+         if (Request == "all" or Request == "others" or Request == "everyone") then
             game.Players:Chat(":tp all me")
-         elseif GetMatchingPlayerName(Player) then
-         game.Players:Chat(":tp " .. GetMatchingPlayerName(Player) .. " me")
+
+         elseif (Request == "friends") then
+            for _,v in pairs(game.Players:GetChildren()) do 
+               if (LP:IsFriendsWith(v.UserId)) then
+                  game.Players:Chat(":tp " .. v.Name .. " me")
+               else
+                  --
+               end
+            end
+
+         elseif (Request == "noadmins") then
+            for _,v in pairs(game.Players:GetChildren()) do
+               local HasAdminPad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(v.Name .. "'s admin")
+               local HasPerm = CheckForPerm(v.Name)
+               if (not HasAdminPad) then
+                  if HasPerm == false then
+                     game.Players:Chat(":tp " .. v.Name .. " me")
+                  else
+                     --
+                  end
+               else
+                  --
+               end
+            end
+
+         elseif (Request == "admins") then
+            game.Players:Chat(":tp admins me")
+
+         elseif GetMatchingPlayerName(Request) then
+            local Player = GetMatchingPlayerName(Request)
+         game.Players:Chat(":tp " .. Player .. " me")
          else
             return
          end
@@ -532,6 +564,9 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
       -- // Gear Ban \\ --
       
       if string.sub(msg:lower(), 0, 7) == "gearban" then
+        if _G.Loop == true then
+            return
+        end
         local player = string.sub(msg, 9)
         _G.Loop = true
         while _G.Loop == true do
@@ -884,7 +919,7 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
 -- Functions End
 
    if string.sub(msg:lower(), 0, #msg) == "pclose" then
-      notify("Bender", "Please wait..", 0.5)
+      notify("Bender", "...", 0.5)
       local HasPersons = CheckForPersons(LP.Name)
       local Timer = 1
 
@@ -892,6 +927,7 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
       if HasPersons then
          -- Setting Up Crash
          notify("Bender", "Attempting to crash..", 1)
+         game.Players:Chat(":respawn all")
          getgenv().Loop = true
          while Loop == true do
             -- Server Crash
