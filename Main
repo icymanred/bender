@@ -1,5 +1,3 @@
--- Loadsring: loadstring(game:HttpGet("https://raw.githubusercontent.com/traveIing/bender/main/Main"))()
-
 --[[
 ____                      ___                          ___      ____
 |  _ \                     | |                         /_ |     |___ \
@@ -99,14 +97,8 @@ local isKohls, KohlsID, placeID, jobID, User, Display, LP, Character, UserInputS
             game.Players:Chat(":tp all me")
 
          elseif (Request == "friends") then
-            for _,v in pairs(game.Players:GetChildren()) do 
-               if (LP:IsFriendsWith(v.UserId)) then
-                  game.Players:Chat(":tp " .. v.Name .. " me")
-               else
-                  --
-               end
-            end
-
+            game.Players:Chat(":tp friends me")
+            
          elseif (Request == "noadmins") then
             for _,v in pairs(game.Players:GetChildren()) do
                local HasAdminPad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(v.Name .. "'s admin")
