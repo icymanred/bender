@@ -1,6 +1,6 @@
 function playAudio(req)
 
-    if (getgenv().muteAudio == true) then
+    if (getgenv().muteSound == true) then
         return
     end
 
@@ -13,8 +13,17 @@ function playAudio(req)
         Intro.archivable = false
         Intro.Parent = game.Workspace
         Intro:Play()
-end
+    elseif req == "Error" then
+        local Error = Instance.new("Sound")
+        Error.Name = "Error Sound"
+        Error.SoundId = "http://www.roblox.com/asset/?id=4841731967"
+        Error.Volume = 2
+        Error.Looped = false
+        Error.archivable = false
+        Error.Parent = game.Workspace
+        Error:Play() 
     end
+end
 function muteAudio(req)
     if req == true then
         getgenv().muteSound = true
