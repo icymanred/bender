@@ -1,37 +1,27 @@
 -- Gamepass Check
 local function hasPerm(plr)
-    for _, v in pairs(game.Players:GetChildren()) do
-        if v.Name == plr then
-            local PermNBC = 66254
-            local PermBC = 64354
-            local UserID = v.UserId
+    local PermNBC = 66254
+    local PermBC = 64354
+    local UserID = plr.UserId
 
-            if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermNBC), PermNBC)
-                or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermBC), PermBC) then
-                return true
-            else
-                return false
-            end
-            break
-        end
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermNBC), PermNBC)
+        or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermBC), PermBC) then
+        return true
+    else
+        return false
     end
 end
 
 local function hasPersons(plr)
-    for _, v in pairs(game.Players:GetChildren()) do
-        if v.Name == plr then
-            local PersonNBC = 35748
-            local PersonBC = 37127
-            local UserID = v.UserId
+    local PersonNBC = 35748
+    local PersonBC = 37127
+    local UserID = plr.UserId
 
-            if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonNBC), PersonNBC)
-                or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonBC), PersonBC) then
-                return true
-            else
-                return false
-            end
-            break
-        end
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonNBC), PersonNBC)
+        or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonBC), PersonBC) then
+        return true
+    else
+        return false
     end
 end
 
@@ -91,9 +81,7 @@ local function updatePlayerList()
 
         usernameLabel.Text = player.Name
 
-        task.wait()
-
-        if hasPerm(player.Name) == true then
+        if hasPerm(player) then
             local permissionLabel = Instance.new("TextLabel")
             permissionLabel.Size = UDim2.new(0, 80, 0, 30)
             permissionLabel.Position = UDim2.new(1, -90, 0, 0)
@@ -107,9 +95,7 @@ local function updatePlayerList()
             permissionLabel.Parent = bubble
         end
 
-        task.wait()
-
-        if hasPersons(player.Name) == true then
+        if hasPersons(player) then
             local permissionLabelr = Instance.new("TextLabel")
             permissionLabelr.Size = UDim2.new(0, 80, 0, 30)
             permissionLabelr.Position = UDim2.new(1, -90, 0, 22)
@@ -128,7 +114,8 @@ local function updatePlayerList()
     end
 end
 
-updatePlayerList()
-
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
 game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+
+-- Initial player list update
+updatePlayerList()
