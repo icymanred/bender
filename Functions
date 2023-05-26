@@ -1,11 +1,24 @@
-function playSound(song)
-    if song == "intro" then
-    local Audio = Instance.new("Sound")
-    Audio.Name = "Introduction";
-    Audio.SoundId = "http://www.roblox.com/asset/?id=1570675466";
-    Audio.Volume = 5;
-    Audio.Looped = false;
-    Audio.Archivable = false;
-    Audio.Parent = game.Workspace;
+function playAudio(req)
+
+    if muteIntroAudio(true) then
+        return
+    end
+
+    if req == "Intro" then
+        local Intro = Instance.new("Sound")
+        Intro.Name = "Introduction Sound"
+        Intro.SoundId = "http://www.roblox.com/asset/?id=1570675466"
+        Intro.Volume = 2
+        Intro.Looped = false
+        Intro.archivable = false
+        Intro.Parent = game.Workspace
+        Intro:Play()
+end
+    end
+function muteIntroAudio(req)
+    if req == true then
+        _G.muteAudio = true
+    else
+        _G.muteAudio = false
     end
 end
