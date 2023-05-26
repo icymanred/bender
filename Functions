@@ -1,6 +1,6 @@
 function playAudio(req)
 
-    if muteIntroAudio(true) then
+    if (getgenv().muteAudio == true) then
         return
     end
 
@@ -15,10 +15,10 @@ function playAudio(req)
         Intro:Play()
 end
     end
-function muteIntroAudio(req)
+function muteAudio(req)
     if req == true then
-        _G.muteAudio = true
+        getgenv().muteSound = true
     else
-        _G.muteAudio = false
+        getgenv().muteSound = false
     end
 end
