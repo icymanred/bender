@@ -1,42 +1,41 @@
 -- Gamepass Check
-
 local function hasPerm(plr)
-    for _,v in pairs(game.Players:GetChildren()) do
+    for _, v in pairs(game.Players:GetChildren()) do
         if v.Name == plr then
-           local PermNBC = 66254
-           local PermBC =  64354
-           local UserID = v.UserId
+            local PermNBC = 66254
+            local PermBC = 64354
+            local UserID = v.UserId
 
-     if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermNBC), PermNBC)
-     or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermBC), PermBC) then
-        return true
-     else
-        return false
-     end
-     break
-  end
+            if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermNBC), PermNBC)
+                or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PermBC), PermBC) then
+                return true
+            else
+                return false
+            end
+            break
+        end
+    end
 end
-end
+
 local function hasPersons(plr)
-    for _,v in pairs(game.Players:GetChildren()) do
+    for _, v in pairs(game.Players:GetChildren()) do
         if v.Name == plr then
-           local PersonNBC = 35748
-           local PersonBC =  37127
-           local UserID = v.UserId
-  
-     if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonNBC), PersonNBC)
-     or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonBC), PersonBC) then
-        return true
-     else
-        return false
-     end
-     break
-  end
-  end
+            local PersonNBC = 35748
+            local PersonBC = 37127
+            local UserID = v.UserId
+
+            if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonNBC), PersonNBC)
+                or string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. UserID .. "/items/GamePass/" .. PersonBC), PersonBC) then
+                return true
+            else
+                return false
+            end
+            break
+        end
+    end
 end
 
 -- PlayerList Code
-
 local PlayerList = game:GetService("CoreGui").PlayerList
 
 local MAX_BUBBLES = 7
@@ -46,9 +45,9 @@ local FADE_DURATION = 0.5
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 200, 0, (BUBBLE_HEIGHT + BUBBLE_SPACING) * MAX_BUBBLES)
-frame.Position = UDim2.new(1, -220, 0, 35) 
-frame.BackgroundTransparency = 1 
-frame.BorderSizePixel = 0 
+frame.Position = UDim2.new(1, -220, 0.5, -((BUBBLE_HEIGHT + BUBBLE_SPACING) * MAX_BUBBLES) / 2) -- Adjust the position
+frame.BackgroundTransparency = 1
+frame.BorderSizePixel = 0
 frame.Parent = PlayerList
 
 local function createBubble(parent)
@@ -64,8 +63,8 @@ local function createBubble(parent)
     usernameLabel.Size = UDim2.new(1, -10, 1, 0)
     usernameLabel.Position = UDim2.new(0, 5, 0, 0)
     usernameLabel.BackgroundTransparency = 1
-    usernameLabel.TextColor3 = Color3.fromRGB(255, 255, 255) 
-    usernameLabel.TextSize = 16 
+    usernameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    usernameLabel.TextSize = 16
     usernameLabel.Font = Enum.Font.SourceSans
     usernameLabel.Parent = bubble
 
@@ -77,49 +76,53 @@ local function updatePlayerList()
     for _, child in ipairs(frame:GetChildren()) do
         child:Destroy()
     end
-    
+
     local players = game:GetService("Players"):GetPlayers()
-    
+
     local totalHeight = frame.Size.Y.Offset
     local availableHeight = math.min(totalHeight, (#players * (BUBBLE_HEIGHT + BUBBLE_SPACING)) - BUBBLE_SPACING)
     local spacing = availableHeight / #players
-    
+
     for i, player in ipairs(players) do
         local bubble, usernameLabel = createBubble(frame)
-        
-        bubble.BackgroundColor3 = Color3.fromRGB(50, 50, 50) 
-        bubble.BackgroundTransparency = 0.3 
-        
-        usernameLabel.Text = player.Name
-        task.wait()
-if hasPerm(player.Name) == true then
 
-    local permissionLabel = Instance.new("TextLabel")
-    permissionLabel.Size = UDim2.new(0, 80, 0, 30)
-    permissionLabel.Position = UDim2.new(1, -90, 0, 0)
-    permissionLabel.BackgroundTransparency = 1
-    permissionLabel.Text = "Perm"
-    permissionLabel.TextColor3 = Color3.fromRGB(186, 33, 33)
-    permissionLabel.TextSize = 14
-    permissionLabel.Font = Enum.Font.SourceSans
-    permissionLabel.TextXAlignment = Enum.TextXAlignment.Right
-    permissionLabel.TextYAlignment = Enum.TextYAlignment.Center
-    permissionLabel.Parent = bubble
-end
-task.wait()
-if hasPersons(player.Name) == true then
-    local permissionLabelr = Instance.new("TextLabel")
-    permissionLabelr.Size = UDim2.new(0, 80, 0, 30)
-    permissionLabelr.Position = UDim2.new(1, -90, 0, 22)
-    permissionLabelr.BackgroundTransparency = 1
-    permissionLabelr.Text = "Person299"
-    permissionLabelr.TextColor3 = Color3.fromRGB(33, 101, 186)
-    permissionLabelr.TextSize = 14
-    permissionLabelr.Font = Enum.Font.SourceSans
-    permissionLabelr.TextXAlignment = Enum.TextXAlignment.Right
-    permissionLabelr.TextYAlignment = Enum.TextYAlignment.Center
-    permissionLabelr.Parent = bubble
-end
+        bubble.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        bubble.BackgroundTransparency = 0.3
+
+        usernameLabel.Text = player.Name
+
+        task.wait()
+
+        if hasPerm(player.Name) == true then
+            local permissionLabel = Instance.new("TextLabel")
+            permissionLabel.Size = UDim2.new(0, 80, 0, 30)
+            permissionLabel.Position = UDim2.new(1, -90, 0, 0)
+            permissionLabel.BackgroundTransparency = 1
+            permissionLabel.Text = "Perm"
+            permissionLabel.TextColor3 = Color3.fromRGB(186, 33, 33)
+            permissionLabel.TextSize = 14
+            permissionLabel.Font = Enum.Font.SourceSans
+            permissionLabel.TextXAlignment = Enum.TextXAlignment.Right
+            permissionLabel.TextYAlignment = Enum.TextYAlignment.Center
+            permissionLabel.Parent = bubble
+        end
+
+        task.wait()
+
+        if hasPersons(player.Name) == true then
+            local permissionLabelr = Instance.new("TextLabel")
+            permissionLabelr.Size = UDim2.new(0, 80, 0, 30)
+            permissionLabelr.Position = UDim2.new(1, -90, 0, 22)
+            permissionLabelr.BackgroundTransparency = 1
+            permissionLabelr.Text = "Person299"
+            permissionLabelr.TextColor3 = Color3.fromRGB(33, 101, 186)
+            permissionLabelr.TextSize = 14
+            permissionLabelr.Font = Enum.Font.SourceSans
+            permissionLabelr.TextXAlignment = Enum.TextXAlignment.Right
+            permissionLabelr.TextYAlignment = Enum.TextYAlignment.Center
+            permissionLabelr.Parent = bubble
+        end
+
         local yOffset = (i - 1) * (BUBBLE_HEIGHT + BUBBLE_SPACING) + 5
         bubble.Position = UDim2.new(0, 15, 0, yOffset)
     end
