@@ -1,0 +1,9 @@
+      local playSound = function(title, id, volume);
+      local Audio = Instance.new("Sound")
+      Audio.Name = title;
+      Audio.SoundId = "http://www.roblox.com/asset/?id=" .. id;
+      Audio.Volume = volume;
+      Audio.Looped = false
+      Audio.Archivable = false
+      Audio.Parent = game.Workspace
+      end
