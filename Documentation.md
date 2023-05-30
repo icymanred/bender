@@ -27,7 +27,7 @@ Key Categories:
 
 Current Updates:
 
-    Forest V1.5: Removed a few code bottlenecks, and Infinite Yield; minor string, and code structure adjustments.
+    Forest V3: Major bug fixes and improvements. | 5/29/23
     Sunrise V1:
     Waterfall V1:
 
