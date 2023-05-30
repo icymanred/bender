@@ -176,7 +176,34 @@ end)
 frame.Position = isSlided and UDim2.new(1, 0, 0.5, -((BUBBLE_HEIGHT + BUBBLE_SPACING) * MAX_BUBBLES) / 2) or UDim2.new(1, -220, 0.5, -((BUBBLE_HEIGHT + BUBBLE_SPACING) * MAX_BUBBLES) / 2)
 
 game:GetService("Players").PlayerAdded:Connect(updatePlayerList)
-game:GetService("Players").PlayerRemoving:Connect(updatePlayerList)
+local function isLocalPlayerLeaving(player)
+    if player == game.Players.LocalPlayer then
+        return true
+    else
+        return false
+    end
+end
 
--- Initial player list update
+local Connections = {}
+local function isLocalPlayerLeaving(player)
+    if player == game.Players.LocalPlayer then
+        return true
+    else
+        return false
+    end
+end
+local function removeFunction()
+    for _, Connection in ipairs(Connections) do
+        Connection:Disconnect()
+        break
+    end
+end
+Connections[#Connections + 1] = game:GetService("Players").PlayerRemoving:Connect(function(player)
+    if isLocalPlayerLeaving(player) then
+        removeFunction()        
+        return
+    end
+    updatePlayerList()
+end)
+
 updatePlayerList()
