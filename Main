@@ -1,10 +1,27 @@
 --[[
 
-____                       _                           _       _  _
-| __ )    ___   _ __     __| |   ___   _ __    __   __ / |     | || |
-|  _ \   / _ \ | '_ \   / _` |  / _ \ | '__|   \ \ / / | |     | || |_
-| |_) | |  __/ | | | | | (_| | |  __/ | |       \ V /  | |  _  |__   _|
-|____/   \___| |_| |_|  \__,_|  \___| |_|        \_/   |_| (_)    |_|
+____                       _                       
+| __ )    ___   _ __     __| |   ___   _ __   
+|  _ \   / _ \ | '_ \   / _` |  / _ \ | '__|                                              
+| |_) | |  __/ | | | | | (_| | |  __/ | |             
+|____/   \___| |_| |_|  \__,_|  \___| |_|   
+
+                     `. ___
+                    __,' __`.                _..----....____
+        __...--.'``;.   ,.   ;``--..__     .'    ,-._    _.-'
+  _..-''-------'   `'   `'   `'     O ``-''._   (,;') _,'
+,'________________                          \`-._`-','
+ `._              ```````````------...___   '-.._'-:
+    ```--.._      ,.                     ````--...__\-.
+            `.--. `-`                       ____    |  |`
+              `. `.                       ,'`````.  ;  ;`
+                `._`.        __________   `.      \'__/`
+                   `-:._____/______/___/____`.     \  `
+                               |       `._    `.    \
+                               `._________`-.   `.   `.___
+                                             SSt  `------'`
+
+
 
 
 --]]
@@ -1247,46 +1264,36 @@ repeat task.wait() until game:IsLoaded()
                                        end
                                     end
 
-                                    function Punish(Player) -- thanks
+                                    function Punish(Player) 
                                        -- Saved Variable For Current Audio
-
-                                       if SoundCheck() == true then
-                                          local SavedSound = tostring(game:GetService("Workspace").Terrain["_Game"].Folder.Sound.SoundId)
-                                          local SoundID = tostring(string.match(SavedSound, "%d+$"))
-
-                                          -- Playing Strike Sound
-                                          game.Players:Chat(":music 821439273")
-                                          -- Punish Command Code
-                                          game.Players:Chat(":explode " .. Player)
-                                          local Random = math.random(1, 1000)
-                                          game.Players:Chat(":unpunish " .. Player .. " " .. Random)
-                                          game.Players:Chat(":invisible " .. Player .. " " .. Random)
-                                          game.Players:Chat(":refresh " .. Player .. " " .. Random)
-                                          game.Players:Chat(":invisible " .. Player .. " " .. Random)
-                                          game.Players:Chat(":kill " .. Player .. " " .. Random)
-                                          game.Players:Chat(":trip " .. Player .. " " .. Random)
-                                          game.Players:Chat(":setgrav " .. Player .. " -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-                                          task.wait(.1)
-                                          game.Players:Chat(":invisible " .. Player .. " " .. Random)
-                                          task.wait(.2)
-                                          game.Players:Chat(":invisible " .. Player .. " " .. Random)
-                                          task.wait(.2)
+                                       local SavedSound = tostring(game:GetService("Workspace").Terrain["_Game"].Folder.Sound.SoundId)
+                                       local SoundID = tostring(string.match(SavedSound, "%d+$"))
+                                       -- Playing Silence Command Sound
+                                       game.Players:Chat(":music 821439273")
+                                       -- Punish Command Code
+                                       game.Players:Chat(":explode " .. Player)
+                                       local Random = math.random(1, 1000)
+                                       game.Players:Chat(":unpunish " .. Player .. " " .. Random)
+                                       game.Players:Chat(":invisible " .. Player .. " " .. Random)
+                                       game.Players:Chat(":refresh " .. Player .. " " .. Random)
+                                       game.Players:Chat(":invisible " .. Player .. " " .. Random)
+                                       game.Players:Chat(":kill " .. Player .. " " .. Random)
+                                       game.Players:Chat(":trip " .. Player .. " " .. Random)
+                                       game.Players:Chat(":setgrav " .. Player .. " -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+                                       task.wait(.1)
+                                       game.Players:Chat(":invisible " .. Player .. " " .. Random)
+                                       task.wait(.2)
+                                       game.Players:Chat(":invisible " .. Player .. " " .. Random)
+                                       task.wait(.2)
+                                       game.Players:Chat(":punish " .. Player .. " " .. Random)
+                                       task.wait()
+                                       for i = 1, 11 do
                                           game.Players:Chat(":punish " .. Player .. " " .. Random)
-                                          task.wait()
-                                          for i = 1, 11 do
-                                             game.Players:Chat(":punish " .. Player .. " " .. Random)
-                                          end
-                                          if not LockedSound == true then
-                                             task.wait(4)
-                                             -- Playing Old Audio Again
-                                             game.Players:Chat(":music 0"); -- If no audio is playing
-                                             game.Players:Chat(":music " .. SoundID);
-                                          else
-                                             --
-                                          end
-                                       else
-                                          --
                                        end
+                                       task.wait(4)
+                                       -- Playing Old Audio Again
+                                       game.Players:Chat(":music 0"); -- If no audio is playing
+                                       game.Players:Chat(":music " .. SoundID);
                                     end
 
 
