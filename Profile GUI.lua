@@ -154,7 +154,7 @@ end
     
     ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    ScreenGui.ResetOnDeath = false;
+    ScreenGui.ResetOnSpawn = false;
     
     UserProfile.Name = "UserProfile"
     UserProfile.Parent = ScreenGui
