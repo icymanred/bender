@@ -102,7 +102,7 @@ function promptProfileGUI(plr)
                 -- Getting precise last-online date
 
                 local dateResponse = HttpRequest({
-                                    Url = "https://www.rolimons.com/playerapi/player/1";
+                                    Url = "https://www.rolimons.com/playerapi/player/" .. _G.UserID;
                                 })
                                 for i,json in pairs(dateResponse) do
                                     if type(json) == "string" then
@@ -329,3 +329,5 @@ end
         ImageLabel_2.ImageTransparency = 0;
     end
 end
+
+promptProfileGUI("roblox") 
