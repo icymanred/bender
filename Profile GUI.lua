@@ -154,6 +154,7 @@ end
     
     ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.ResetOnDeath = false;
     
     UserProfile.Name = "UserProfile"
     UserProfile.Parent = ScreenGui
@@ -328,3 +329,5 @@ end
         ImageLabel_2.ImageTransparency = 0;
     end
 end
+
+promptProfileGUI("roblox") 
