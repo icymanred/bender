@@ -328,5 +328,3 @@ end
         ImageLabel_2.ImageTransparency = 0;
     end
 end
-
-promptProfileGUI("roblox") 
