@@ -80,7 +80,7 @@ end
 function Rejoin()
 TeleportService:TeleportToPlaceInstance(game.PlaceId, JobId, LP);
 end
-    function checkIfCrashed()
+    function CheckIfCrashed()
         local Ping1 = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
         task.wait(1)
         local Ping2 = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
