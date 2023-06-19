@@ -59,6 +59,7 @@ textBox.FocusLost:Connect(onSubmit)
 
 local function onInput(input, gameProcessedEvent)
     if not gameProcessedEvent and input.KeyCode == TOGGLE_KEY then
+        task.wait(0.001)
         textBox:CaptureFocus()
     end
 end
