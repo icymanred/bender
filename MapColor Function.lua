@@ -195,7 +195,7 @@ game.Players:Chat(":ungear me")
 
 end
 
-function FixMap()
+function FixMapColors()
 prepMapChange(0.5)
 task.spawn(function()
 ColorAPI.colorObbyBox(transformColor("Teal"))
