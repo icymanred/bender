@@ -239,4 +239,3 @@ end)
 task.wait(0.6)
 game.Players:Chat(":ungear me")
 end
-FixMap();
