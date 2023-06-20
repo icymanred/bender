@@ -190,7 +190,7 @@ end)
 task.spawn(function()
 ColorAPI.colorPads(transformColor(color))
 end)
-task.wait(0.2)
+task.wait(0.5)
 game.Players:Chat(":ungear me")
 
 end
@@ -236,6 +236,6 @@ chiC = transformColor("Sand red"),
 ColorAPI.color(game.Workspace.Terrain["_Game"].Workspace["Baseplate"], transformColor("Bright green"))
 })
 end)
-task.wait(0.2)
+task.wait(0.5)
 game.Players:Chat(":ungear me")
 end
