@@ -195,7 +195,7 @@ game.Players:Chat(":ungear me")
 
 end
 
-function FixHouse()
+function FixMap()
 prepMapChange(0.5)
 task.spawn(function()
 ColorAPI.colorObbyBox(transformColor("Teal"))
@@ -239,4 +239,4 @@ end)
 task.wait(0.6)
 game.Players:Chat(":ungear me")
 end
-FixHouse();
+FixMap();
