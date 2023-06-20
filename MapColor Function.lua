@@ -133,7 +133,7 @@ ColorAPI.colorBuildingBricks = function(arg)
 		end
 end
 -- Defining function to fix the house
-local function fixHouse()
+function FixHouse()
 spawn(function()
 	ColorAPI.colorObbyBox(ColorAPI.transformToColor3(BrickColor.new("Teal")))
 end)
@@ -229,3 +229,5 @@ function ChangeMapColor(color)
     task.wait(0.6)
     game.Players:Chat(":ungear me")
 end
+ 
+    ChangeMapColor("red")
