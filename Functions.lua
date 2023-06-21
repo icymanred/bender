@@ -94,7 +94,7 @@ end
 
 
 function JoinPlayer(plrID)
-
+task.spawn(function()
 -- Variables
 local userID = plrID
 local gameID = tostring(game.PlaceId)
@@ -152,9 +152,11 @@ index = index + 1
             return false
         end
     end)
+end)
 end
 
 function IsInGame(plrID)
+    task.spawn(function()
     -- Variables
     local userID = plrID
     local gameID = tostring(game.PlaceId)
@@ -209,6 +211,6 @@ function IsInGame(plrID)
             end
         end
     end
-    
     return false
+end)
 end
