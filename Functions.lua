@@ -93,7 +93,7 @@ end
     end
 
 
-function JoinPlayer(plrID)
+function JoinPlayer(plrID, check)
 
 -- Variables
 local userID = plrID
@@ -146,7 +146,11 @@ index = index + 1
                 -- Making sure the headshot is our guy
                 if v.imageUrl == playerImageURL then
                     _G.foundPlayer = true;
+                    if (check) ~= "info" then
                     game:GetService("TeleportService"):TeleportToPlaceInstance(gameID, v.requestId)
+                    else
+                        _G.plrInfo = true
+                    end
                 end
             end
             return false
