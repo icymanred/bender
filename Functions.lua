@@ -146,14 +146,69 @@ index = index + 1
                 -- Making sure the headshot is our guy
                 if v.imageUrl == playerImageURL then
                     _G.foundPlayer = true;
-                    if (check ~= "info") then
                     game:GetService("TeleportService"):TeleportToPlaceInstance(gameID, v.requestId)
-                    elseif (check == "join") then
-                        getgenv().plrInfo = true
-                    end
                 end
             end
             return false
         end
     end)
+end
+
+function IsInGame(plrID)
+    -- Variables
+    local userID = plrID
+    local gameID = tostring(game.PlaceId)
+    local httpService = game:GetService("HttpService")
+    local servers, cursor = {}
+
+    -- API calls
+    local serverData = HttpRequest({
+        Url = string.format("https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=Desc&limit=100%s", gameID, cursor and "&cursor=" .. cursor or "")
+    })
+    cursor = serverData.nextPageCursor
+    local playerHeadshot = HttpRequest({
+        Url = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=".. userID .. "&size=150x150&format=Png&isCircular=false"
+    })
+    serverData = httpService:JSONDecode(serverData.Body)
+    
+    -- More Variables
+    local playerImageURL = httpService:JSONDecode(playerHeadshot.Body).data[1].imageUrl
+    local index = 0
+    index = index + 1
+    
+    -- Starting the player search
+    for _, server in pairs(serverData.data) do
+        -- Looping through every player in the game to store their headshot
+        local playerIcons = {}
+        for i = 1, #server.playerTokens do
+            table.insert(playerIcons, {
+                token = server.playerTokens[i],
+                type = "AvatarHeadshot",
+                size = "150x150",
+                requestId = server.id
+            })
+        end
+        -- Pulling any server data from the headshot
+        local postRequest = HttpRequest({
+            Url = "https://thumbnails.roblox.com/v1/batch",
+            Method = "POST",
+            Body = httpService:JSONEncode(playerIcons),
+            Headers = {
+                ["Content-Type"] = "application/json"
+            }
+        })
+        local recvServerData = httpService:JSONDecode(postRequest.Body).data
+        -- Making sure there's nothing blank
+        if not recvServerData then
+            return false
+        end
+        for _, v in pairs(recvServerData) do
+            -- Making sure the headshot is our guy
+            if v.imageUrl == playerImageURL then
+                return true
+            end
+        end
+    end
+    
+    return false
 end
