@@ -68,7 +68,7 @@ function ServerHop()
         local randomServer = Servers[math.random(1, #Servers)];
 
         if Queue then
-            Queue("loadstring(game:HttpGet('https://raw.githubusercontent.com/traveIing/bender/main/Main'))()")
+            Queue("loadstring(game:HttpGet('https://raw.githubusercontent.com/traveIing/bender/main/Main.lua'))()")
         end
         
             TeleportService:TeleportToPlaceInstance(PlaceId, randomServer, LP)
@@ -121,7 +121,6 @@ index = index + 1
             -- Looping through every player in the game to store their headshot
             local playerIcons = {}
             for i = 1, #server.playerTokens do
-                print(server.playerTokens[i])
                 table.insert(playerIcons, {
                     token = server.playerTokens[i],
                     type = "AvatarHeadshot",
@@ -150,6 +149,7 @@ index = index + 1
                     game:GetService("TeleportService"):TeleportToPlaceInstance(gameID, v.requestId)
                 end
             end
+            return false
         end
     end)
 end
