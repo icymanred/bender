@@ -146,10 +146,10 @@ index = index + 1
                 -- Making sure the headshot is our guy
                 if v.imageUrl == playerImageURL then
                     _G.foundPlayer = true;
-                    if (check) ~= "info" then
+                    if (check ~= "info") then
                     game:GetService("TeleportService"):TeleportToPlaceInstance(gameID, v.requestId)
-                    else
-                        _G.plrInfo = true
+                    elseif (check == "join") then
+                        getgenv().plrInfo = true
                     end
                 end
             end
