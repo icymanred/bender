@@ -93,7 +93,7 @@ end
     end
 
 
-function JoinPlayer(plrID, check)
+function JoinPlayer(plrID)
 
 -- Variables
 local userID = plrID
