@@ -7,8 +7,6 @@ PlaceId = game.PlaceId;
 JobId = game.JobId;
 LP = game.Players.LocalPlayer;
 Queue = (fluxus and fluxus.queue_on_teleport) or (syn and syn.queue_on_teleport) or (queue_on_teleport);
-Split = string.split(msg, " ")
-Rest = table.concat(string.split(msg, " "), " ", 1)
 
 -- // Audio \\ --
 
