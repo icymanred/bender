@@ -156,6 +156,3 @@ end
             warn("An error occurred:", response)
         end
     end
-    
-    
-    JoinPlayer("2371572518")
