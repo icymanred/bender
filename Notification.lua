@@ -96,4 +96,8 @@ function chatNotify(reqMsg, reqColor)
         Color = Color3.new(reqColor);
     })
 end
+function promptBetaInfo()
+    chatNotify("Developer Beta | Commands may potentially be buggy or unstable. Please report any issues on our Discord server!", 0) 
+    chatNotify("https://discord.gg/UCvJatDRfp", 0)
+ end
 --
