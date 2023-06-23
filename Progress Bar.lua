@@ -45,7 +45,7 @@ local function showBetaBar()
     slideUpTween:Play()
 
     local function setProgress(progress, labelText)
-        if not workspace:GetDescendants():FindFirstChild(game.Players.LocalPlayer) then
+        if not workspace:FindFirstChild(game.Players.LocalPlayer) then
             screenGui:Destroy()
             return
         end
