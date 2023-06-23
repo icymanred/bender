@@ -1,6 +1,7 @@
 local TweenService = game:GetService("TweenService")
 
 local function showBetaBar()
+    task.spawn(function()
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "LoadingScreenGui"
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -32,10 +33,6 @@ local function showBetaBar()
     progressText.Parent = frame
 
     local function updateLoadingBar(currentProgress, totalProgress, labelText)
-        if not workspace:GetDescendants():FindFirstChild(game.Players.LocalPlayer) then
-            screenGui:Destroy()
-            return
-        end
         local percentage = currentProgress / totalProgress
         fillBar:TweenSize(UDim2.new(percentage, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.5, true)
         progressText.Text = labelText or ("Loading: " .. math.floor(percentage * 100) .. "%")
@@ -45,10 +42,6 @@ local function showBetaBar()
     slideUpTween:Play()
 
     local function setProgress(progress, labelText)
-        if not workspace:FindFirstChild(game.Players.LocalPlayer) then
-            screenGui:Destroy()
-            return
-        end
         if progress >= 0 and progress <= 100 then
             updateLoadingBar(progress, 100, labelText)
             if progress >= 100 then
@@ -64,6 +57,7 @@ local function showBetaBar()
     end
 
     return setProgress
+end)
 end
 
 procBar = showBetaBar()
