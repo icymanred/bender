@@ -1,7 +1,6 @@
 local TweenService = game:GetService("TweenService")
 
 local function showBetaBar()
-    task.spawn(function()
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "LoadingScreenGui"
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -57,7 +56,6 @@ local function showBetaBar()
     end
 
     return setProgress
-end)
 end
 
 procBar = showBetaBar()
