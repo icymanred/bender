@@ -195,6 +195,8 @@ game.Players:Chat(":ungear me")
 
 end
 
+-- // Themes (MISC)
+
 function FixMapColors()
 prepMapChange(0.5)
 task.spawn(function()
@@ -238,4 +240,48 @@ ColorAPI.color(game.Workspace.Terrain["_Game"].Workspace["Baseplate"], transform
 end)
 task.wait(0.5)
 game.Players:Chat(":ungear me")
+end
+
+function Quiving()
+    prepMapChange(0.5)
+    task.spawn(function()
+        ColorAPI.colorObbyBox(transformColor("Bright green"))
+    end)
+    task.spawn(function()
+        ColorAPI.colorObbyBricks(transformColor("Really black"))
+    end)
+    task.spawn(function()
+        ColorAPI.colorAdminDivs(transformColor("Really black"))
+    end)
+    task.spawn(function()
+        ColorAPI.colorPads(transformColor("Bright green"))
+    end)
+    task.spawn(function()
+        ColorAPI.colorBuildingBricks({
+            DarkStoneGrey = transformColor("Really black"),
+            DeepBlue = transformColor("Bright green"),
+            NY = transformColor("Really black"),
+            IW = transformColor("Dark stone grey"),
+            LimeGreen = transformColor("Bright green"),
+            MSG = transformColor("Really black"),
+            RB = transformColor("Bright green"),
+            TP = transformColor("Dark stone grey"),
+            RR = transformColor("Really black"),
+        })
+    end)
+    task.spawn(function()
+        ColorAPI.colorHouse({
+            wallsC = transformColor("Bright green"),
+            baseC = transformColor("Really black"),
+            roofC = transformColor("Bright green"),
+            WANDDC = transformColor("Really black"),
+            stairsC = transformColor("Dark stone grey"),
+            floorC = transformColor("Bright green"),
+            rooftsC = transformColor("Really black"),
+            chiC = transformColor("Bright green"),
+            ColorAPI.color(game.Workspace.Terrain["_Game"].Workspace["Baseplate"], transformColor("Earth green"))
+        })
+    end)
+    task.wait(0.5)
+    game.Players:Chat(":ungear me")
 end
