@@ -27,9 +27,9 @@ Key Categories:
 
 Current Updates:
 
-    Forest V3.2: Restored functionality for the "silence" command. | 5/31/23
-    Sunrise V1:
-    Waterfall V1.2: Added cool ASCII art at the top of the script. | 5/31/23
+    Forest V4.5: Minor code optimizations. | 6/26/23
+    Sunrise V1.5: Lots of new commands. | 6/26/23
+    Waterfall V1.5: Added a Countdown GUI. | 6/19/23
 
 
 ## Commands
